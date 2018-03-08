@@ -35,3 +35,6 @@ Route::post('/listerMangasGenre', 'MangaController@getMangasGenre');
 
 // Afficher un manga pour pouvoir le modifier
 Route::get('/modifierManga/{id}', 'MangaController@updateManga');
+
+// Enregistrer la mise à jour d'un manga
+Route::post('/validerManga', 'MangaController@validateManga');

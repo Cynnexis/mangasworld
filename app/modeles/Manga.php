@@ -2,6 +2,7 @@
 
 namespace App\modeles;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
@@ -46,5 +47,21 @@ class Manga extends Model
 		    ->first();
     	
     	return $manga;
+    }
+    
+    public function updateManga($id_manga, $titre, $couverture, $prix, $id_dessinateur, $id_genre, $id_scenariste) {
+    	try {
+		    DB::table('manga')->where('id_manga', '=', $id_manga)
+			    ->update([
+			    	'id_dessinateur' => $id_dessinateur,
+				    'prix' => $prix,
+				    'titre' => $titre,
+				    'couverture' => $couverture,
+				    'id_genre' => $id_genre,
+				    'id_scenariste' => $id_scenariste
+			    ]);
+	    } catch (Exception $ex) {
+		    throw $ex;
+	    }
     }
 }
