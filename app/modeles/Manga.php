@@ -33,4 +33,18 @@ class Manga extends Model
 		            ->get();
     	return $mangas;
     }
+    
+    /**
+     * Lecture d'un manga sur son Id
+     * @param int $idManga id à lire
+     * @return Objet Manga
+     */
+    public function getManga($idManga) {
+    	$manga = DB::table('manga')
+		    ->select()
+		    ->where('id_manga', '=', $idManga)
+		    ->first();
+    	
+    	return $manga;
+    }
 }

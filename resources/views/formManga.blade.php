@@ -2,7 +2,7 @@
 @section('content')
 {!! Form::open(['url' => 'validerManga', 'files' => true]) !!}
 <div class="col-md-12 well well-sm">
-    <center><h1>/* A compléter */</h1></center>
+    <center><h1>{{ $titreVue }}</h1></center>
     <div class="form-horizontal">    
         <div class="form-group">
             <input type="hidden" name="id_manga" value="{{ $manga->id_manga or 0 }}"/>
@@ -32,8 +32,15 @@
             <label class="col-md-3 control-label">Scenariste : </label>
             <div class="col-md-3">
                 <select class='form-control' name='cbScenariste' required>  
-                    <OPTION VALUE=0>Sélectionner un Scenariste</option>
-                    /* A compléter */
+                    <option value=0>Sélectionner un Scenariste</option>
+	                @foreach ($scenaristes as $scenariste)
+		                selected=""
+		                <option value="{{ $scenariste->id_scenariste }}"
+		                        @if ($scenariste->id_scenariste == $manga->id_scenariste)
+		                        selected="selected"
+				                @endif
+		                >{{ $scenariste->nom_scenariste }}</option>
+	                @endforeach
                 </select>
             </div>
         </div>
@@ -41,15 +48,22 @@
             <label class="col-md-3 control-label">Dessinateur : </label>
             <div class="col-md-3">
                 <select class='form-control' name='cbDessinateur' required>
-                    <OPTION VALUE=0>Sélectionner un Dessinateur</option>
-                    /* A compléter */
+                    <option value=0>Sélectionner un Dessinateur</option>
+	                @foreach ($dessinateurs as $dessinateur)
+		                selected=""
+		                <option value="{{ $dessinateur->id_dessinateur }}"
+		                        @if ($dessinateur->id_dessinateur == $manga->id_dessinateur)
+		                        selected="selected"
+				                @endif
+		                >{{ $dessinateur->nom_dessinateur }}</option>
+	                @endforeach
                 </select>
             </div>
         </div>     
         <div class="form-group">
             <label class="col-md-3 control-label">Prix : </label>
             <div class="col-md-3">
-                <input type="text" name="prix" value="/* A compléter */" class="form-control" >
+                <input type="text" name="prix" value="{{ $manga->prix }}" class="form-control" >
             </div>
         </div>
         <div class="form-group">
@@ -74,5 +88,5 @@
         </div>
     </div>
 </div>
-/* A compléter */
-/* A compléter */
+{{ Form::close() }}
+@stop

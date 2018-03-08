@@ -32,3 +32,6 @@ Route::get('/listerGenres', 'GenreController@getGenres');
 
 // Lister tous les mangas d'un genre séletionné
 Route::post('/listerMangasGenre', 'MangaController@getMangasGenre');
+
+// Afficher un manga pour pouvoir le modifier
+Route::get('/modifierManga/{id}', 'MangaController@updateManga');
