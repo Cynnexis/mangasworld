@@ -26,3 +26,9 @@ Route::get('/signOut', 'UtilisateurController@signOut');
 
 // Afficher la liste de tous les Mangas
 Route::get('/listerMangas', 'MangaController@getMangas');
+
+// Afficher la liste déroulante des genres
+Route::get('/listerGenres', 'GenreController@getGenres');
+
+// Lister tous les mangas d'un genre séletionné
+Route::post('/listerMangasGenre', 'MangaController@getMangasGenre');
