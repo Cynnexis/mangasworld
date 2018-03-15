@@ -24,22 +24,25 @@ Route::post('/signIn', 'UtilisateurController@signIn');
 // Déloguer l'utilisateur
 Route::get('/signOut', 'UtilisateurController@signOut');
 
-// Afficher la liste de tous les Mangas
-Route::get('/listerMangas', 'MangaController@getMangas');
+Route::group(['middleware' => ['autorise']], function() {
+	// Afficher la liste de tous les Mangas
+	Route::get('/listerMangas', 'MangaController@getMangas');
 
-// Afficher la liste déroulante des genres
-Route::get('/listerGenres', 'GenreController@getGenres');
+	// Afficher la liste déroulante des genres
+	Route::get('/listerGenres', 'GenreController@getGenres');
 
-// Lister tous les mangas d'un genre séletionné
-Route::post('/listerMangasGenre', 'MangaController@getMangasGenre');
+	// Lister tous les mangas d'un genre séletionné
+	Route::post('/listerMangasGenre', 'MangaController@getMangasGenre');
 
-// Afficher un manga pour pouvoir le modifier
-Route::get('/modifierManga/{id}', 'MangaController@updateManga');
+	// Afficher un manga pour pouvoir le modifier
+	Route::get('/modifierManga/{id}', 'MangaController@updateManga');
 
-// Enregistrer la mise à jour d'un manga
-Route::post('/validerManga', 'MangaController@validateManga');
+	// Enregistrer la mise à jour d'un manga
+	Route::post('/validerManga', 'MangaController@validateManga');
 
-// Ajoute un manga
-Route::get('/ajouterManga', 'MangaController@addManga');
+	// Ajoute un manga
+	Route::get('/ajouterManga', 'MangaController@addManga');
 
-Route::get('/supprimerManga/{id}', 'MangaController@deleteManga');
+	// Supprimer un manga
+	Route::get('/supprimerManga/{id}', 'MangaController@deleteManga');
+});
