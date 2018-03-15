@@ -38,3 +38,8 @@ Route::get('/modifierManga/{id}', 'MangaController@updateManga');
 
 // Enregistrer la mise à jour d'un manga
 Route::post('/validerManga', 'MangaController@validateManga');
+
+// Ajoute un manga
+Route::get('/ajouterManga', 'MangaController@addManga');
+
+Route::get('/supprimerManga/{id}', 'MangaController@deleteManga');
